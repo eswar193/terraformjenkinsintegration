@@ -97,6 +97,15 @@ data "aws_ami" "my_ami" {
      owners           = ["564430985426"]
 }
 
+terraform {
+  backend "remote" {
+    organization = "example_corp"
+
+    workspaces {
+      name = "Terraformbackend"
+    }
+  }
+}
 
 resource "aws_instance" "web-1" {
     ami = "${var.customami}"
